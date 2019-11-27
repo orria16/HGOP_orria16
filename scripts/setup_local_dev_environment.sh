@@ -46,6 +46,7 @@ BREW_VERSION="$(brew --version)"
 GIT_VERSION="$(git --version | grep -Po "(\d+\.)+\d+")"
 NPM_VERSION="$(npm --v)"
 NODE_VERSION="$(node -v)"
+AWS_VERSION="$(aws --version)"
 
 echo
 # check verion af brew you have
@@ -79,6 +80,15 @@ then
 else
     echo "NodeJS version:           NOT INSTALLED"
 fi
+
+if [ "$AWS_VERSION" ]
+then
+    echo "AWS version:              $AWS_VERSION"
+else
+    echo "AWS version:              NOT INSTALLED"
+fi
+
+
 
 # show date and timewhen scipt started and ended
 echo 

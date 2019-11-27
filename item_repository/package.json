@@ -6,7 +6,7 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "FILL_IN_WITH_YOUR_NAME",
+    "author": "Orri Arsaelsson",
     "license": "ISC",
     "dependencies": {
       "express": "4.17.1",
