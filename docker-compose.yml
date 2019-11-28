@@ -1,7 +1,7 @@
 version: '3'
 services:
   my_item_repository:
-    image: orria16/hgop:part2
+    image: orria16/hgop:day2
     ports:
     - '3000:3000'
     depends_on:
@@ -16,4 +16,3 @@ services:
       POSTGRES_DB: 'my_postgres_database'
       POSTGRES_USER: 'my_postgres_user'
       POSTGRES_PASSWORD: 'my_postgres_password'
-
