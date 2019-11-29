@@ -5,6 +5,7 @@ OS_CHECK=$(uname -srm | cut -d' ' -f1)
 start="$(date)"
 
 log_file=setup_local_dev_environment.log
+
 print_output()
 {
 echo Welcome "$USER"
