@@ -15,4 +15,4 @@ services:
     environment:
       POSTGRES_DB: 'my_postgres_database'
       POSTGRES_USER: 'my_postgres_user'
-      POSTGRES_PASSWORD: 'my_postgres_password'
+      POSTGRES_PASSWORD: 'my_postgres_password'      
