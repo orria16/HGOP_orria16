@@ -6,14 +6,14 @@ node {
         sh "git stash"
     }
     stage("Install") {
-        sh "npm install --prefix game-api"
+        sh "npm install --prefix game_api"
     }
     stage("ESLint Tests") {
-        sh "npm run eslint --prefix game-api"
+        sh "npm run eslint --prefix game_api"
     }
 
     stage("Unit Testing") {
-        sh "npm run test:unit --prefix game-api"
+        sh "npm run test:unit --prefix game_api"
     }
 
     stage("Build") {
