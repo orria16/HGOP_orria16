@@ -19,5 +19,9 @@
         "react"
     ],
     "rules": {
+        "max-len":[1,187,2],
+        "require-jsdoc" : 0
+
+
     }
 }

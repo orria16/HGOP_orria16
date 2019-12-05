@@ -113,15 +113,15 @@ module.exports = (deck, dealer) => {
     },
     getState: (game) => {
       return {
-          cards: game.state.cards,
-          cardsValue: game.getCardsValue(game),
-          card: game.state.card,
-          cardValue: game.getCardValue(game),
-          total: game.getTotal(game),
-          gameOver: game.isGameOver(game),
-          playerWon: game.playerWon(game),
+        cards: game.state.cards,
+        cardsValue: game.getCardsValue(game),
+        card: game.state.card,
+        cardValue: game.getCardValue(game),
+        total: game.getTotal(game),
+        gameOver: game.isGameOver(game),
+        playerWon: game.playerWon(game),
       };
-  },
+    },
   };
 };
 
