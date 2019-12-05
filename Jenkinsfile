@@ -1,6 +1,6 @@
 node {
     def git = checkout scm
-    /*
+    
     stage("Clean") {
         sh "echo 'I solemnly swear that I know not to run this without committing changes I want to keep!'"
         sh "git clean -dfxq"
@@ -15,7 +15,7 @@ node {
 
     stage("Unit Testing") {
         sh "npm run test:unit --prefix game_api"
-    }*/
+    }
 
     stage("Build") {
         echo "${git.GIT_COMMIT}"
