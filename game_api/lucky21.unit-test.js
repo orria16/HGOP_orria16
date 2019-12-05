@@ -62,7 +62,7 @@ describe('Testing isGameOver', () => {
     // Arrange
     game.state.cards = ['01D', '09S', '10H'];
     game.state.card = '05C';
-     // Assert
+    // Assert
     expect(game.isGameOver(game)).toEqual(true);
   });
 
