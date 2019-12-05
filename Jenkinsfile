@@ -17,7 +17,6 @@ node {
         sh "npm run test:unit --prefix game_api"
     }*/
 
-
     stage("Build") {
         echo "${git.GIT_COMMIT}"
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
