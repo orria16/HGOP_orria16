@@ -111,6 +111,17 @@ module.exports = (deck, dealer) => {
       // TODO
       game.state.card = dealer.draw(game.state.deck);
     },
+    getState: (game) => {
+      return {
+          cards: game.state.cards,
+          cardsValue: game.getCardsValue(game),
+          card: game.state.card,
+          cardValue: game.getCardValue(game),
+          total: game.getTotal(game),
+          gameOver: game.isGameOver(game),
+          playerWon: game.playerWon(game),
+      };
+  },
   };
 };
 
