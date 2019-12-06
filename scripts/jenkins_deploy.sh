@@ -24,7 +24,7 @@ terraform destroy -auto-approve
 terraform apply -auto-approve
 echo "Game API running at " + $(terraform output public_ip)
 
-ssh -o StrictHostKeyChecking=no -i "/home/ubuntu/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
-ssh -o StrictHostKeyChecking=no -i "/home/ubuntu/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
+ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
+ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
 
 #TODO exit on error if deployment fails.
