@@ -1,6 +1,8 @@
 # HGOP_orria16
 
-# WEEK 1
+# WEEK 2
+
+
 
 URL to instance running api:
 
