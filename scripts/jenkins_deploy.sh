@@ -15,7 +15,7 @@ cp docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.
 # TODO: Delete all .tf files from /var/lib/jenkins/terraform/hgop/
 rm -f /var/lib/jenkins/terraform/hgop/production/*.tf
 # TODO: Copy all .tf files from repository to /var/lib/jenkins/terraform/hgop/production
-cp -a ~/workspace/HGOP19_orria/*.tf /var/lib/jenkins/terraform/hgop/production
+cp *.tf /var/lib/jenkins/terraform/hgop/production
 
 
 cd /var/lib/jenkins/terraform/hgop/production
