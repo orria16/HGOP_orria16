@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "jest --coverage --testRegex .*.unit-test.js",
+    "test:api": "jest --testRegex .*.api-test.js",
+    "test:capacity": "jest --testRegex .*.capacity-test.js",
     "eslint": "node ./node_modules/eslint/bin/eslint.js ./"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "4.17.1",
-    "pg": "7.12.1"
+    "pg": "7.12.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

@@ -1,3 +1,7 @@
+variable "environment" {
+	type = "string"
+}
+
 # This tells Terraform we want to create a new infrastructure, 
 # using AWS as the provider and using our credentials found under account details that we copied from AWS (workbench page),
 # And the server region we want to use
@@ -10,7 +14,7 @@ provider "aws" {
 # and setting its inbound and outbout rules.
 # Inbound will allow TCP port 22 and 3000, outbound seems to be the default.
 resource "aws_security_group" "game_security_group" {
-  name = "GameSecurityGroup"
+  name = "GameSecurityGroup_${var.environment}"
 
   ingress {
     from_port   = 22
@@ -43,7 +47,7 @@ resource "aws_instance" "game_server" {
   key_name               = "GameKeyPair"
   vpc_security_group_ids = [aws_security_group.game_security_group.id]
   tags = {
-    Name = "GameServer"
+    Name = "GameServer_${var.environment}"
   }
 
     # A game initialization script is provided from our local computer and is copied over to the Instance server's destination
