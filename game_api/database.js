@@ -57,18 +57,24 @@ module.exports = function(context) {
     },
     // Should call onSuccess with integer.
     getTotalNumberOfGames: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const query = {
+				text: 'SELECT COUNT(*) FROM "GameResult";'
+			};
+			return sendQuery(onSuccess, onError, query);
     },
     // Should call onSuccess with integer.
     getTotalNumberOfWins: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const query = {
+				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Won" = TRUE;'
+			};
+			return sendQuery(onSuccess, onError, query);
     },
     // Should call onSuccess with integer.
     getTotalNumberOf21: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const query = {
+				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Total" = 21;'
+			};
+			return sendQuery(onSuccess, onError, query);
     },
   };
 };
