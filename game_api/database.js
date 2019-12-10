@@ -30,30 +30,33 @@ module.exports = function(context) {
       }
     });
   }, 5000);
-
+  // Function returns total count and takes in queries as parameters
+  const sendQuery = (onSuccess, onError, query) => {
+    const client = getClient();
+    client.connect((err) => {
+      if (err) {
+        onError(err);
+        client.end();
+      } else {
+        client.query(query, (err, res) => {
+          if (err) {
+            onError();
+          } else {
+					  res.rows[0] ? onSuccess(res.rows[0].count) : onSuccess();
+          }
+          client.end();
+        });
+      }
+    });
+    return;
+  };
   return {
     insertResult: (won, score, total, onSuccess, onError) => {
-      const client = getClient();
-      client.connect((err) => {
-        if (err) {
-          onError(err);
-          client.end();
-        } else {
-          const query = {
-            text: 'INSERT INTO GameResult(Won, Score, Total, InsertDate) VALUES($1, $2, $3, CURRENT_TIMESTAMP);',
-            values: [won, score, total],
-          };
-          client.query(query, (err) => {
-            if (err) {
-              onError(err);
-            } else {
-              onSuccess();
-            }
-            client.end();
-          });
-        }
-      });
-      return;
+      const query = {
+        text: 'INSERT INTO "GameResult" ("Won", "Score", "Total", "InsertDate") VALUES($1, $2, $3, CURRENT_TIMESTAMP);',
+        values: [won, score, total],
+      };
+      return sendQuery(onSuccess, onError, query);
     },
     // Should call onSuccess with integer.
     getTotalNumberOfGames: (onSuccess, onError) => {

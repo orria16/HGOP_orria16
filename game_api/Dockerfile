@@ -1,15 +1,13 @@
-FROM node:erbium
-# set the working directory to /code
+FROM node:dubnium
+# Set the working directory to /code
 WORKDIR /code
-# copies my local package.json to docker image
+# Copies our local package.json to docker image
 COPY package.json package.json
-#install npm packages dependencies into docker image
-RUN npm install
-
+COPY package-lock.json package-lock.json
+# Installs package dependencies into docker image
+RUN npm install --production
 # Copies our local files to the docker working directory
-COPY database.js database.js
-
-COPY app.js app.js
-
+# Copies everyfile as it is.
+COPY . .
 # Runs the nodejs app
-CMD node app.js
+CMD sleep 5 && npm run migratedb:pg && node app.js

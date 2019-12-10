@@ -20,8 +20,9 @@
     ],
     "rules": {
         "max-len":[1,187,2],
-        "require-jsdoc" : 0
-
-
+        "require-jsdoc" : 0,
+        "no-unused-vars": 0,
+        "no-tabs": 0,
+        "no-mixed-spaces-and-tabs": [2, "smart-tabs"]
     }
 }
