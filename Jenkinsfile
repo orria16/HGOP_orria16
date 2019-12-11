@@ -36,7 +36,7 @@ node {
         dir("./game_api"){
             sh "./../scripts/api_test.sh"
         }
-        dir("/var/liv/jenkins/terraform/hgop/apitest"){
+        dir("/var/lib/jenkins/terraform/hgop/apitest"){
             sh "terraform destroy -auto-approve -var enviroment=apitest || exit 1"
         }
     }
