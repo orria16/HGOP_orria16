@@ -46,7 +46,7 @@ node {
         dir("./game_api"){
             sh "./../scripts/capacity_test.sh"
         }
-        dir("/var/liv/jenkins/terraform/hgop/capacitytest"){
+        dir("/var/lib/jenkins/terraform/hgop/capacitytest"){
             sh "terraform destroy -auto-approve -var enviroment=capacitytest || exit 1"
         }
     }

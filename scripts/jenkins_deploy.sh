@@ -21,8 +21,8 @@ cp *.tf /var/lib/jenkins/terraform/hgop/$env
 
 cd /var/lib/jenkins/terraform/hgop/$env
 terraform init # In case terraform is not initialized.
-terraform destroy -auto-approve -var environment=$env || exit 1
-terraform apply -auto-approve -var environment=$env || exit 1
+terraform destroy -auto-approve 
+terraform apply -auto-approve 
 echo "Game API running at " + $(terraform output public_ip)
 
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./initialize_game_api_instance.sh"
