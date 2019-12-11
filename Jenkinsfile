@@ -30,10 +30,23 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
     stage("Testing API") {
-        sh "npm run test:api --prefix game_api"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        dir("./game_api"){
+            sh "./../scripts/api_test.sh"
+        }
+        dir("/var/liv/jenkins/terraform/hgop/apitest"){
+            sh "terraform destroy -auto-approve -var enviroment=apitest || exit 1"
+        }
     }
     stage("Testing Capacity") {
-        sh "npm run test:capacity --prefix game_api"
+
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
+        dir("./game_api"){
+            sh "./../scripts/capacity_test.sh"
+        }
+        dir("/var/liv/jenkins/terraform/hgop/capacitytest"){
+            sh "terraform destroy -auto-approve -var enviroment=capacitytest || exit 1"
+        }
     }
     
     stage("Deploy") {
