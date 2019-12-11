@@ -1,4 +1,4 @@
-module.exports = function (context) {
+module.exports = function(context) {
 	const Client = context('pgClient');
 	const configConstructor = context('config');
 	const config = configConstructor(context);
@@ -12,7 +12,7 @@ module.exports = function (context) {
 		});
 	}
 
-	let client = getClient();
+	const client = getClient();
 	setTimeout(() =>
 		client.connect((err) => {
 			if (err) {
@@ -23,7 +23,7 @@ module.exports = function (context) {
 		}), 5000);
 	// Function returns total count and takes in queries as parameters
 	const sendQuery = (onSuccess, onError, query) => {
-		let client = getClient();
+		const client = getClient();
 		client.connect((err) => {
 			if (err) {
 				onError(err);
@@ -55,21 +55,21 @@ module.exports = function (context) {
 		// Should call onSuccess with integer.
 		getTotalNumberOfGames: (onSuccess, onError) => {
 			const query = {
-				text: 'SELECT COUNT(*) FROM "GameResult";'
+				text: 'SELECT COUNT(*) FROM "GameResult";',
 			};
 			return sendQuery(onSuccess, onError, query);
 		},
 		// Should call onSuccess with integer.
 		getTotalNumberOfWins: (onSuccess, onError) => {
 			const query = {
-				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Won" = TRUE;'
+				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Won" = TRUE;',
 			};
 			return sendQuery(onSuccess, onError, query);
 		},
 		// Should call onSuccess with integer.
 		getTotalNumberOf21: (onSuccess, onError) => {
 			const query = {
-				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Total" = 21;'
+				text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Total" = 21;',
 			};
 			return sendQuery(onSuccess, onError, query);
 		},
