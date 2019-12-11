@@ -37,7 +37,7 @@ node {
             sh "./../scripts/api_test.sh"
         }
         dir("/var/lib/jenkins/terraform/hgop/apitest"){
-            sh "terraform destroy -auto-approve -var enviroment=apitest || exit 1"
+            sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
         }
     }
     stage("Testing Capacity") {
@@ -47,7 +47,7 @@ node {
             sh "./../scripts/capacity_test.sh"
         }
         dir("/var/lib/jenkins/terraform/hgop/capacitytest"){
-            sh "terraform destroy -auto-approve -var enviroment=capacitytest || exit 1"
+            sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
         }
     }
     
