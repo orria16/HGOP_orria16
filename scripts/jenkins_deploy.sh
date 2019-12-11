@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euxo pipefail
 
 GIT_COMMIT=$1
 env=$2
@@ -29,3 +30,5 @@ ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform o
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
 
 #TODO exit on error if deployment fails.
+
+exit 0
