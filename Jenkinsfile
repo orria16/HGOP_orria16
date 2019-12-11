@@ -53,9 +53,6 @@ node {
     
     stage("Deploy") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} production" 
-        dir("/var/lib/jenkins/terraform/hgop/production"){
-            sh "terraform destroy -auto-approve -var environment=production || exit 1"
-        }
     }
 
 }
