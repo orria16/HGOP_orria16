@@ -29,6 +29,7 @@ node {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
+    
     stage("Testing API") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         dir("./game_api"){
