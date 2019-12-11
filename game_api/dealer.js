@@ -1,9 +1,10 @@
 module.exports = (context) => {
-  const random = context('random').randomInt;
+  const randomConstructor = context('random');
+  const random = randomConstructor(context);
   return {
     shuffle: (deck) => {
       for (let i = 0; i < deck.length - 1; i++) {
-        const j = random(i, deck.length);
+        const j = random.randomInt(i, deck.length);
         const card = deck[j];
         const old = deck[i];
         deck[i] = card;

@@ -6,8 +6,9 @@ node {
         sh "git clean -dfxq"
         sh "git stash"
     }
-    stage("Install") {
+    stage("Setup") {
         sh "npm install --prefix game_api"
+        sh "npm install --prefix game_client"
     }
     stage("ESLint Tests") {
         sh "npm run eslint --prefix game_api"
@@ -29,7 +30,7 @@ node {
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
-    
+
     stage("Testing API") {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         dir("./game_api"){
