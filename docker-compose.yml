@@ -18,14 +18,4 @@ services:
     environment:
       POSTGRES_DB: 'game_postgres_database'
       POSTGRES_USER: 'my_postgres_user'
-      POSTGRES_PASSWORD: 'my_postgres_password'
-  game_client:
-    image: orria16/game_client:${GIT_COMMIT}
-    ports:
-    - '4000:4000'
-    depends_on:
-    - game_api
-    environment:
-      PORT: 4000
-      API_PORT: 3000
-      API_URL: ${API_URL}     
+      POSTGRES_PASSWORD: 'my_postgres_password'   
